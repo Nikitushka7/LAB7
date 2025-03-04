@@ -8,7 +8,7 @@ def get_weather(city_name, api_key):
     response = requests.get(complete_url)
     data = response.json()
 
-    if data["cod"] != "404":
+    if data["cod"] != "404": # Проверка на то, что данные успешно спарсились
         main = data["main"]
         weather = data["weather"][0]
 
@@ -27,6 +27,6 @@ def get_weather(city_name, api_key):
 
 
 if __name__ == "__main__":
-    city_name = "Orsk"  # Замените на нужный город
-    api_key = "26838dda1cb9f9aeb1082cfcc2e34216"  # Замените на ваш API ключ от OpenWeatherMap
+    city_name = "Orsk"  # Выбранный город(Мой родной - Орск
+    api_key = "26838dda1cb9f9aeb1082cfcc2e34216"  # Мой API ключ от OpenWeatherMap
     get_weather(city_name, api_key)
