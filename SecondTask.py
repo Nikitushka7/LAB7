@@ -1,7 +1,7 @@
 import requests
 
 
-def get_holidays(api_key, country, year, month=None, day=None):
+def get_holidays(api_key, country, year, month=None, day=None): #Функия для получения данных
     url = "https://holidayapi.com/v1/holidays"
     params = {
         "key": api_key,
@@ -17,20 +17,20 @@ def get_holidays(api_key, country, year, month=None, day=None):
         return {"error": f"Failed to fetch data: {response.status_code}"}
 
 
-def print_holidays(holidays):
+def print_holidays(holidays): # Вывод данных по праздникам
     if "holidays" in holidays:
         for holiday in holidays["holidays"]:
             print(f"{holiday['date']}: {holiday['name']}")
     else:
         print("No holidays found or an error occurred.")
-    if int(month) > 12:
+    if int(month) > 12: #Проверка валидации на введенный месяц.
         print("Введён несуществующий месяц")
 
 
 # Пример использования
 API_KEY = "a61c2fcd-c5d7-45a5-93e9-60bb57f7369d"  # Замените на свой API-ключ
-country = "RU"  # Код страны (например, US, RU, DE)
-year = 2024
+country = "RU"  # Код страны 
+year = 2024 #Год, для которого выводятся праздники
 month = input("Введите номер месяца (например, 01 для января): ")
 
 holidays = get_holidays(API_KEY, country, year, month)
